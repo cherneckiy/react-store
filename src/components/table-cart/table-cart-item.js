@@ -35,7 +35,7 @@ const TableCartItem = ({ id, title, price, index, count, total, addToCart, remov
 }
 
 TableCartItem.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   title: PropTypes.string,
   price: PropTypes.number,
   index: PropTypes.number,

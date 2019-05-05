@@ -33,7 +33,7 @@ const Product = ({ id, title, price, coverImage, addToCart }) => {
 }
 
 Product.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   title: PropTypes.string,
   price: PropTypes.number,
   coverImage: PropTypes.string,
