@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import * as PropTypes from 'prop-types'
 import logo from './logo.svg'
 
@@ -20,11 +20,11 @@ const HeaderApp = ({ total }) => {
 
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul className='navbar-nav mr-auto'>
-              <li className='nav-item active'>
-                <Link className='nav-link' to='/'>Home <span className='sr-only'>(current)</span></Link>
+              <li className='nav-item'>
+                <NavLink className='nav-link' activeClassName='active' to='/' exact>Home</NavLink>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link' to='/cart'>Carts</Link>
+                <NavLink className='nav-link' activeClassName='active' to='/cart'>Carts</NavLink>
               </li>
             </ul>
             <Link to='/cart'>
