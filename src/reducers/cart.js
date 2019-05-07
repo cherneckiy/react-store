@@ -1,3 +1,8 @@
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  ALL_REMOVE_FROM_CART } from '../types'
+
 const newProduct = (product, productInCart = {}, quantity) => {
   const { id = product.id, title = product.title, count = 0, total = 0 } = productInCart
   return {
@@ -64,19 +69,19 @@ const updateCart = (state, action) => {
   }
 
   switch (action.type) {
-    case 'ADD_TO_CART':
+    case ADD_TO_CART:
       return {
         ...state.cart,
         productsInCart: updateProductsInCart(state, action.payload, 1),
         total: getTotal()
       }
-    case 'REMOVE_FROM_CART':
+    case REMOVE_FROM_CART:
       return {
         ...state.cart,
         productsInCart: updateProductsInCart(state, action.payload, -1),
         total: getTotal()
       }
-    case 'ALL_REMOVE_FROM_CART':
+    case ALL_REMOVE_FROM_CART:
       const { count } = state.cart.productsInCart.find(product => product.id === action.payload)
 
       return {
