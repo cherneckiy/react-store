@@ -3,7 +3,18 @@ import { connect } from 'react-redux'
 import * as PropTypes from 'prop-types'
 import { addToCart, removeFromCart, allRemoveFromCart } from '../../actions'
 
-const TableCartItem = ({ id, title, price, index, count, total, addToCart, removeFromCart, allRemoveFromCart }) => {
+const TableCartItem = (props) => {
+  const {
+    id,
+    title,
+    price,
+    index,
+    count,
+    total,
+    addToCart,
+    removeFromCart,
+    allRemoveFromCart } = props
+
   return (
     <tr>
       <th scope='row'>{ index + 1}</th>

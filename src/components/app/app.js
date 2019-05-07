@@ -14,14 +14,12 @@ function App () {
       <BrowserRouter>
         <div className='App'>
           <HeaderApp />
-
           <div className='container'>
             <Switch>
               <Route path='/' component={HomePage} exact />
               <Route path='/cart' component={CartPage} />
             </Switch>
           </div>
-
         </div>
       </BrowserRouter>
     </Provider>

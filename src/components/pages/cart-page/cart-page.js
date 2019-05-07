@@ -2,9 +2,7 @@ import React from 'react'
 import TableCart from '../../table-cart'
 
 const CartPage = () => {
-  return (
-    <TableCart />
-  )
+  return <TableCart />
 }
 
 export default CartPage

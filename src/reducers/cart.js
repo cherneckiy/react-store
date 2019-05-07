@@ -77,10 +77,11 @@ const updateCart = (state, action) => {
         total: getTotal()
       }
     case 'ALL_REMOVE_FROM_CART':
-      const product = state.cart.productsInCart.find(product => product.id === action.payload)
+      const { count } = state.cart.productsInCart.find(product => product.id === action.payload)
+
       return {
         ...state.cart,
-        productsInCart: updateProductsInCart(state, action.payload, -product.count),
+        productsInCart: updateProductsInCart(state, action.payload, -count),
         total: getTotal()
       }
     default:

@@ -13,6 +13,7 @@ class TableCart extends Component {
 
   render () {
     let { productsInCart, total } = this.props
+
     if (productsInCart === undefined || productsInCart.length === 0) {
       return <h1 className='text-center m-5'> Your cart is empty </h1>
     }
@@ -32,10 +33,9 @@ class TableCart extends Component {
             <th scope='col' />
           </tr>
         </thead>
+
         <tbody>
-
           {tableRow}
-
           <tr className='thead-light'>
             <th scope='row' />
             <th scope='row' />
@@ -57,10 +57,7 @@ TableCart.propTypes = {
 }
 
 const mapStateToProps = ({ cart: { productsInCart, total } }) => {
-  return {
-    productsInCart,
-    total
-  }
+  return { productsInCart, total }
 }
 
 const mapDispatchToProps = (dispatch, { services }) => {

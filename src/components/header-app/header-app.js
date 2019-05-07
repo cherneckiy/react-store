@@ -28,8 +28,7 @@ const HeaderApp = ({ total }) => {
               </li>
             </ul>
             <Link to='/cart'>
-              <i className='fas fa-shopping-cart mr-1' />
-            Total: {total}$
+              <i className='fas fa-shopping-cart mr-1' /> Total: {total}$
             </Link>
           </div>
         </div>
@@ -43,8 +42,6 @@ HeaderApp.propTypes = {
 }
 
 const mapStateToProps = ({ cart: { total } }) => {
-  return {
-    total
-  }
+  return { total }
 }
 export default connect(mapStateToProps)(HeaderApp)
