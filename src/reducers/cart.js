@@ -3,8 +3,17 @@ import {
   REMOVE_FROM_CART,
   ALL_REMOVE_FROM_CART } from '../types'
 
+import {
+  removeItem,
+  updateItem } from '../helpers'
+
 const newProduct = (product, productInCart = {}, quantity) => {
-  const { id = product.id, title = product.title, count = 0, total = 0 } = productInCart
+  const {
+    id = product.id,
+    title = product.title,
+    count = 0,
+    total = 0 } = productInCart
+
   return {
     id,
     title,
@@ -18,20 +27,17 @@ const updateProducts = (productsInCart, productNew) => {
   const hasProduct = productsInCart.some(product => product.id === productNew.id)
 
   if (productNew.count === 0) {
-    return productsInCart.filter(product => product.id !== productNew.id)
+    return productsInCart.filter(removeItem(productNew.id))
   }
 
   if (hasProduct) {
-    return productsInCart.map(item => {
-      if (item.id === productNew.id) {
-        return productNew
-      }
-      return item
-    })
+    return productsInCart.map(updateItem(productNew))
   }
 
   return [...productsInCart, productNew]
 }
+
+const getLocalStorage = (name) => JSON.parse(window.localStorage.getItem(name))
 
 const saveLocaleStorage = (name, value) => {
   window.localStorage.removeItem(name)
@@ -53,13 +59,9 @@ const allTotal = (arr) => {
   return arr.reduce((acc, item) => acc + item.total, 0)
 }
 
-const getTotal = () => {
-  return JSON.parse(window.localStorage.getItem('totalInCart'))
-}
-
 const updateCart = (state, action) => {
-  const productsInCart = JSON.parse(window.localStorage.getItem('productsInCart'))
-  const totalInCart = JSON.parse(window.localStorage.getItem('totalInCart'))
+  const productsInCart = getLocalStorage('productsInCart')
+  const totalInCart = getLocalStorage('totalInCart')
 
   if (state === undefined) {
     return {
@@ -73,13 +75,13 @@ const updateCart = (state, action) => {
       return {
         ...state.cart,
         productsInCart: updateProductsInCart(state, action.payload, 1),
-        total: getTotal()
+        total: getLocalStorage('totalInCart')
       }
     case REMOVE_FROM_CART:
       return {
         ...state.cart,
         productsInCart: updateProductsInCart(state, action.payload, -1),
-        total: getTotal()
+        total: getLocalStorage('totalInCart')
       }
     case ALL_REMOVE_FROM_CART:
       const { count } = state.cart.productsInCart.find(product => product.id === action.payload)
@@ -87,7 +89,7 @@ const updateCart = (state, action) => {
       return {
         ...state.cart,
         productsInCart: updateProductsInCart(state, action.payload, -count),
-        total: getTotal()
+        total: getLocalStorage('totalInCart')
       }
     default:
       return state.cart
