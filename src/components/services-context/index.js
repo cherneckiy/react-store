@@ -1,7 +1,9 @@
 import {
   ServicesProvider,
-  ServicesConsumer } from './services-context'
+  ServicesConsumer
+} from './services-context'
 
 export {
   ServicesConsumer,
-  ServicesProvider }
+  ServicesProvider
+}

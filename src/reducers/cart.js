@@ -1,18 +1,21 @@
 import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
-  ALL_REMOVE_FROM_CART } from '../types'
+  ALL_REMOVE_FROM_CART
+} from '../types'
 
 import {
   removeItem,
-  updateItem } from '../helpers'
+  updateItem
+} from '../helpers'
 
 const newProduct = (product, productInCart = {}, quantity) => {
   const {
     id = product.id,
     title = product.title,
     count = 0,
-    total = 0 } = productInCart
+    total = 0
+  } = productInCart
 
   return {
     id,
@@ -50,8 +53,10 @@ const updateProductsInCart = (state, newProductId, quantity) => {
   const productInCart = productsInCart.find(product => product.id === newProductId)
   const productNew = newProduct(product, productInCart, quantity)
   const newProducts = updateProducts(productsInCart, productNew, product)
+
   saveLocaleStorage('productsInCart', newProducts)
   saveLocaleStorage('totalInCart', allTotal(newProducts))
+
   return newProducts
 }
 

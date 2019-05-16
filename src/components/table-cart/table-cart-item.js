@@ -13,7 +13,8 @@ const TableCartItem = (props) => {
     total,
     addToCart,
     removeFromCart,
-    allRemoveFromCart } = props
+    allRemoveFromCart
+  } = props
 
   return (
     <tr>

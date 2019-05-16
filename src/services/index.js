@@ -124,7 +124,9 @@ export default class Services {
 
   getProducts () {
     return new Promise(resolve => {
-      setTimeout(() => resolve(this.data), 700)
+      setTimeout(() => {
+        return resolve(this.data)
+      }, 700)
     })
   }
 }

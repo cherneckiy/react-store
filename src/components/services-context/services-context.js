@@ -2,7 +2,8 @@ import React from 'react'
 
 const {
   Provider: ServicesProvider,
-  Consumer: ServicesConsumer } = React.createContext()
+  Consumer: ServicesConsumer
+} = React.createContext()
 
 export {
   ServicesConsumer,
